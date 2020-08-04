@@ -1,12 +1,13 @@
 # Voof
 
-<center>
+<div align="center">
 
   ![Speed GIF](./docs/readme_media/prediction.gif)
 
   Speeds for this GIF generated using Method #1 ([Full video](https://www.youtube.com/watch?v=ef5jz3NAdp8))
 
-</center>
+</div>
+
 
 ## Overview
 A series of experiments attempting to predict vehicle speed from dash cam videos using optical flow and neural networks. Voof is short for video odometry using optical flow. A more thorough write-up can be found in this [blog](#) post.
@@ -21,13 +22,13 @@ There is a dashcam video `/data/train/train.mp4` that is accompanied by a text f
 ### Image Preprocessing
 With optical flow estimation in mind, the saturation of each pair of frames was augmented with the same uniform random variable to account for illumination changes that will severely deteriorate performance. The majority of the sky and car hood are then cropped since they do not really change between successive frames. The frames are then resized and interpolated to work with the CNN architecture. The image preprocessing remains the same for all methods used.
 
-<center>
+<div align="center">
 
   ![Augmented brightness demo](./docs/readme_media/augmented_brightness.png)
 
   ![Final image demo](./docs/readme_media/final.png)
 
-</center>
+</div>
 
 ### Method #1: Gunnar-Farneback Dense Optical Flow
 Gunnar-Farnebeck is an optimization based method for estimating dense optical flow. Two successive frames are preprocessed and fed into the algorithm. The resulting two-dimensional optical flow field can then be turned into a 3 channel RGB image via the following [method](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_video/py_lucas_kanade/py_lucas_kanade.html).
@@ -40,9 +41,9 @@ Optical flow has historically been an optimization problem, however neural netwo
 ### CNN Architecture
 Once we have optical flow, we can then attempt to train a convolutional neural network to predict speed. Note that this is a regression task not a classification task (although it would be interesting to explore this problem as such). The CNN architecture is from the [End-to-End Deep Learning for Self-Driving Cars](https://developer.nvidia.com/blog/deep-learning-self-driving-cars/) blog post by NVIDIA.
 
-<center>
+<div align="center">
   <img src="./docs/readme_media/nvidia_cnn.jpg" alt="CNN Arch" width="50%"/>
-</center>
+</div>
 
 
 ## Training/Analysis
@@ -51,11 +52,11 @@ The models for both methods were trained in a very similar fashion. With 80% of 
 It turns out that these method works fairly well on the evaluation sets but do not generalize very well. I go more into depth on why I believe this occurs, as well as some of the other caveats in my [blog post](#).
 
 
-<center>
+<div align="center">
 
   ![Loss](./docs/readme_media/loss.png)
 
-</center>
+</div>
 
 ## Previous Work
 * https://github.com/ryanchesler/comma-speed-challenge
