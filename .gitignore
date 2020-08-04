@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# project
+# file is too large
+data/train/train.mp4
