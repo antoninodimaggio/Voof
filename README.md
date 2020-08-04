@@ -10,7 +10,7 @@
 
 
 ## Overview
-A series of experiments attempting to predict vehicle speed from dash cam videos using optical flow and neural networks. Voof is short for video odometry using optical flow. A more thorough write-up can be found in this [blog](#) post.
+A series of experiments attempting to predict vehicle speed from dash cam videos using optical flow and neural networks. Voof is short for video odometry using optical flow. A more thorough write-up can be found in this [blog](https://antoninodimaggio.com/predict-vehicle-speed-using-dense-optical-flow.html) post.
 
 ## Methods
 ### Data
@@ -19,7 +19,7 @@ There is a dashcam video `/data/train/train.mp4` that is accompanied by a text f
 ### Optical Flow
 [Optical flow](https://en.wikipedia.org/wiki/Optical_flow) quantifies the apparent motion of objects between frames. Optical flow can also be defined as the distribution of apparent velocities of movement of brightness patterns in an image. Calculating the relative velocity of the vehicle directly from an optical flow field requires [depth](https://www.youtube.com/watch?v=OB8RncJWIqc) (this was not obviously apparent to me at first). In our case the only way to estimate depth would be to use another neural network, which is not a method I chose to explore (although I believe that it may hold promise in terms of generalization).
 
-### Image Preprocessing
+### Video Preprocessing
 With optical flow estimation in mind, the saturation of each pair of frames was augmented with the same uniform random variable to account for illumination changes that will severely deteriorate performance. The majority of the sky and car hood are then cropped since they do not really change between successive frames. The frames are then resized and interpolated to work with the CNN architecture. The image preprocessing remains the same for all methods used.
 
 <div align="center">
@@ -49,7 +49,7 @@ Once we have optical flow, we can then attempt to train a convolutional neural n
 ## Training/Analysis
 The models for both methods were trained in a very similar fashion. With 80% of the data reserved for training and 20% of the data for evaluation. It is important to note that the data was not randomly shuffled, since this does not preserve integrity between the training and evaluation sets.
 
-It turns out that these method works fairly well on the evaluation sets but do not generalize very well. I go more into depth on why I believe this occurs, as well as some of the other caveats in my [blog post](#).
+It turns out that these method works fairly well on the evaluation sets but do not generalize very well. I go more into depth on why I believe this occurs, as well as some of the other caveats in my [blog post](https://antoninodimaggio.com/predict-vehicle-speed-using-dense-optical-flow.html).
 
 
 <div align="center">
