@@ -47,7 +47,7 @@ Once we have optical flow, we can then attempt to train a convolutional neural n
 
 
 ## Training/Analysis
-The models for both methods were trained in a very similar fashion. With 80% of the data reserved for training and 20% of the data for evaluation. It is important to note that the data was not randomly shuffled, since this does not preserve integrity between the training and evaluation sets.
+The models for both methods were trained in a very similar fashion. With 80% of the data reserved for training and 20% of the data for evaluation. It is important to note that the data was not randomly shuffled, since this does not preserve integrity between the training and evaluation sets. All of the training/evaluation code can be found in [train_eval.py]('./train_eval.py').
 
 It turns out that these method works fairly well on the evaluation sets but do not generalize very well. I go more into depth on why I believe this occurs, as well as some of the other caveats in my [blog post](https://antoninodimaggio.com/predict-vehicle-speed-using-dense-optical-flow.html).
 
