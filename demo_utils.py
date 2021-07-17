@@ -10,7 +10,7 @@ def put_speed_on_video(mp4_path, pred_text_path, act_text_path):
     video = cv2.VideoCapture(mp4_path)
     video.set(1, 1)
     font = cv2.FONT_HERSHEY_SIMPLEX
-    out = cv2.VideoWriter('./docs/demos/readme_media/promo.mp4', 0x7634706d, 20, (640, 480))
+    out = cv2.VideoWriter('./docs/demos/demo.mp4', 0x7634706d, 20, (640, 480))
     for t in count():
         ret, frame = video.read()
         if ret == False or t >= len(pred_speed_list):
@@ -18,11 +18,11 @@ def put_speed_on_video(mp4_path, pred_text_path, act_text_path):
         pred_curr_speed = pred_speed_list[t]
         act_curr_speed = act_speed_list[t]
         cv2.putText(frame,
-            f'Speed: {pred_curr_speed}',
+            f'Speed (m/s): {pred_curr_speed}',
             (50, 50),
             font,
             0.7,
-            (51, 100, 51),
+            (242, 23, 161),
             2,
             cv2.LINE_4)
         cv2.putText(frame,
@@ -70,4 +70,5 @@ def graph_loss(log_file_path_farn, log_file_path_pwc):
 
 
 if __name__ == '__main__':
-    graph_loss('./training_logs/farneback.log', './training_logs/pwc.log')
+    put_speed_on_video('./data/train/train.mp4', './docs/demos/pred_test.txt', './data/train/train.txt')
+    # graph_loss('./training_logs/farneback.log', './training_logs/pwc.log')
