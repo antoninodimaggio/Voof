@@ -51,7 +51,3 @@ def linear(in_features, out_features):
     return nn.Sequential(
             nn.Linear(in_features, out_features),
             nn.ELU())
-
-
-if __name__ == '__main__':
-    understand_tensor()
